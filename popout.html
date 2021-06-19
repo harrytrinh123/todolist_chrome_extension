@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,18 +10,50 @@
         body {
             width: 350px;
         }
-        .todo-items, .todo-items li {
+
+        .todo-items,
+        .todo-items li {
             margin: 0;
             padding: 0;
+            list-style: none;
+        }
+
+        .todo-items li {
+            padding: 10px;
+            border-bottom: 2px solid grey;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .todo-items li.done .item {
+            text-decoration: line-through;
+        }
+
+        .todo-items div span {
+            margin: 5px;
+        }
+
+        .itemComplete,
+        .itemDelete {
+            cursor: pointer;
         }
     </style>
 </head>
+
 <body>
     <h1>My todo's</h1>
+    <div class="create">
+        <button class="create-todo">New item</button>
+        <div class="divThem" style="display: none;">
+            <input id="inputTodo" type="text"> <button id="btnSave">Save</button>
+        </div>
+        
+    </div>
+    <!-- To do list -->
     <ul class="todo-items">
-        <li>Record next video <span>☑️</span> <span>❌</span> </li>
-        <li>Record next video <span>☑️</span> <span>❌</span> </li>
-        <li>Record next video <span>☑️</span> <span>❌</span> </li>
+
     </ul>
 </body>
+<script src="./popout.js"></script>
+
 </html>
