@@ -8,7 +8,7 @@
     <title>Todo List</title>
     <style>
         body {
-            width: 350px;
+            width: 450px;
         }
 
         .todo-items,
@@ -19,8 +19,9 @@
         }
 
         .todo-items li {
+            font-size: 15px;
             padding: 10px;
-            border-bottom: 2px solid grey;
+            border-bottom: 1px solid rgb(163, 203, 240);
             display: flex;
             justify-content: space-between;
         }
@@ -37,15 +38,59 @@
         .itemDelete {
             cursor: pointer;
         }
+
+        .navbar {
+            width: 450px;
+            height: 110px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid gray;
+        }
+        .left img {
+            width: 100px;
+            height: 100px;
+        }
+        .left {
+            width: 130px;
+            float: left;
+        }
+        .right {
+            width: 320px;
+            float: right;
+
+        }
+
+        .create-todo, #btnSave {
+            background-color: rgb(93, 189, 236);
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            color: white;
+        }
+
+        #inputTodo {
+            padding: 5px 10px;
+            box-sizing: border-box;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
     </style>
 </head>
 
 <body>
-    <h1>My todo's</h1>
+    <div class="navbar">
+        <div class="left"><img src="./icons/icon.png" alt=""></div>
+        <div class="right">
+            <h1>My todo's</h1>
+            <span>😸 Lưu giữ các ý tưởng bất chợt, ghi nhớ công việc phải làm.</span>
+        </div>
+    </div>
+    
     <div class="create">
-        <button class="create-todo">New item</button>
+        <button class="create-todo">➕ Add</button>
         <div class="divThem" style="display: none;">
-            <input id="inputTodo" type="text"> <button id="btnSave">Save</button>
+            <input placeholder="do my homework..." id="inputTodo" type="text"> <button id="btnSave">Save</button>
         </div>
         
     </div>
