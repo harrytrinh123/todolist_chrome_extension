@@ -1,6 +1,8 @@
 document.querySelector('.create-todo').addEventListener('click', function () {
     document.querySelector('.create-todo').style.display = "none";
     document.querySelector('.divThem').style.display = "block";
+    document.querySelector('#inputTodo').value = '';
+    document.querySelector('#inputTodo').focus();
     document.querySelector('#btnSave').addEventListener('click', function () {
         var itemName = document.querySelector('#inputTodo').value;
         if (itemName != '') {
