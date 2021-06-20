@@ -118,3 +118,10 @@ function saveItems(obj) {
 }
 
 fetchItems();
+
+//today
+n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = "Today: " + d + "/" + m + "/" + y;
