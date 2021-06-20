@@ -1,21 +1,23 @@
+
 document.querySelector('.create-todo').addEventListener('click', function () {
     document.querySelector('.create-todo').style.display = "none";
     document.querySelector('.divThem').style.display = "block";
     document.querySelector('#inputTodo').value = '';
     document.querySelector('#inputTodo').focus();
-    document.querySelector('#btnSave').addEventListener('click', function () {
-        var itemName = document.querySelector('#inputTodo').value;
-        if (itemName != '') {
-            var itemsStorage = localStorage.getItem("todo-items");
-            var itemsArr = JSON.parse(itemsStorage);
-            itemsArr.push({ "item": itemName, "status": 0});
-            saveItems(itemsArr);
-            fetchItems();
-            document.querySelector('.create-todo').style.display = "block";
-            document.querySelector('.divThem').style.display = "none";
-        }
-    });
 });
+
+document.querySelector('#btnSave').addEventListener('click', function () {
+    var itemName = document.querySelector('#inputTodo').value;
+    if (itemName != '') {
+        var itemsStorage = localStorage.getItem("todo-items");
+        var itemsArr = JSON.parse(itemsStorage);
+        itemsArr.push({ "item": itemName, "status": 0});
+        saveItems(itemsArr);
+        fetchItems();
+        document.querySelector('.create-todo').style.display = "block";
+        document.querySelector('.divThem').style.display = "none";
+    }
+}); 
 
 document.querySelector('#inputTodo').addEventListener('keyup', function (event) {
     if (event.keyCode === 13) {
@@ -30,14 +32,14 @@ function fetchItems() {
     var newItemHTML = '';
     try {
         var items = localStorage.getItem('todo-items');
-        var itemArr = JSON.parse(items);
-        for (var i = 0; i < itemArr.length; i++) {
+        var itemsArr = JSON.parse(items);
+        for (var i = 0; i < itemsArr.length; i++) {
             var status = '';
-            if (itemArr[i].status == 1) {
+            if (itemsArr[i].status == 1) {
                 status = 'class="done"';
             }
             newItemHTML += `<li data-itemindex="${i}" ${status}>
-            <span class="item">${itemArr[i].item}</span> 
+            <span class="item">${itemsArr[i].item}</span> 
             <div><span class="itemComplete">☑️</span> <span class="itemDelete">❌</span></div> 
             </li>`
 
@@ -53,6 +55,11 @@ function fetchItems() {
             itemsListUL[i].querySelector('.itemDelete').addEventListener('click', function () {
                 var index = this.parentNode.parentNode.dataset.itemindex;
                 itemDelete(index);
+                fetchItems();
+                var itemsStorage = localStorage.getItem("todo-items");
+                var Arr = JSON.parse(itemsStorage);
+                console.log(index);
+                console.log(Arr);
             });
         }
     } catch (error) {
